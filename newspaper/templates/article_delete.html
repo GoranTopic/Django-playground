@@ -1,0 +1,18 @@
+<!-- tamplates/article_delete.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> Delete {{object.title }}</h1>
+<form action=""  method="POST">
+		<p>Are you sure you want to delete "{{ article.title }}"?</p>
+		{% csrf_token %}
+		{{ form.as_p }} 
+
+		<button class="btn btn-danger ml-2" type="submit">Confirm</button>
+</form>
+
+{% endblock content %}
+
+
+

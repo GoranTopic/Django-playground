@@ -1,0 +1,53 @@
+<!--- templates/base.html -->
+
+{% load static %}
+
+<html>
+		
+	<head>
+			<title>Telix's Blog App</title>
+
+			 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"rel="stylesheet">
+
+			 <link href="{% static 'css/base.css' %}" rel="stylesheet">
+
+	</head>
+
+
+	<body>
+
+			
+			<header>
+						<p> <h1><a href="{%url 'home' %}" >Telix's Blog</a></h1></p>
+					<div class="nav-right">
+					{% if user.is_authenticated %}
+							<p>Hi, {{ user.username }} </p>
+							<p><a href="">Add Blog Post</a></p>
+							<p><a href="{% url 'logout' %}">Logout</a></p>
+					{% else %}
+						<p><a href="{% url 'login' %}">Login</a></p>
+						<p><a href="{% url 'signup' %}">Sign Up</a></p>
+					{% endif %}
+					</div>
+			</header>
+				
+			<div>
+					<h2>
+							Welcome,
+							{% if user.is_authenticated %}
+							{{ user.username }}
+							{% else %}
+							radom person
+							{% endif %}
+							! to the best Blog site on the internet, truely
+					</h2>
+			</div>
+
+		<div>
+				{% block content %}
+				{% endblock content %}
+		</div>
+
+	</body>
+
+</html>
